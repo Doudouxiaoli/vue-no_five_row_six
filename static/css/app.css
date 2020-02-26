@@ -1,0 +1,183 @@
+*, *:before {
+  box-sizing: border-box;
+}
+
+div {
+  display: block;
+}
+
+.a {
+  color: black;
+  text-decoration: none;
+}
+
+#app {
+  border-top: 3px solid #795e9f;
+  width: 1362px;
+  margin-top: 10px;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1.4;
+  /*background-color: silver;*/
+}
+
+.wrap {
+  width: 80%;
+  margin-left: 10%;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+}
+
+.nav {
+  width: 100%;
+}
+
+.nav > .topNav {
+  margin-top: 25px;
+  height: 80px;
+  /*background-color: blue;*/
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.topNav > .topNav-left .topNav-left_logo {
+  float: left;
+}
+
+.topNav-left_logo > .logo_icon, .logo_font {
+  width: 60px;
+  box-sizing: border-box;
+  padding: 5px;
+  margin-left: -5px;
+}
+
+.logo_font {
+  width: auto;
+  margin: 5px;
+}
+
+.topNav > .topNav-right {
+  position: relative;
+  float: right;
+  display: block;
+}
+
+.topNav-right > .topNav-right_user, .topNav-right_searchFrom, .topNav-right_code {
+  position: relative;
+  display: inline-block;
+}
+
+.searchFrom_input::before .searchFrom_btn::before {
+  clear: both;
+}
+
+.topNav-right_searchFrom > .searchFrom_input {
+  font-family: inherit;
+  padding: 8px 40px 8px 16px;
+  margin-top: 15px;
+  height: 40px;
+  width: 100%;
+  border: 2px solid #8674a1;
+  outline: 0;
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+.topNav-right_searchFrom > .searchFrom_btn {
+  padding: 0 8px 0 6px;
+  height: 66%;
+  width: 38px;
+  position: absolute;
+  top: 15px;
+  margin-right: 2px;
+  margin-top: 2px;
+  right: 0;
+  background: url("../images/head-search.png") center no-repeat;
+  background-size: 70% 70%;
+  cursor: pointer;
+}
+
+.topNav-right_user {
+  top: 15px;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  background: url("../images/user.png") center no-repeat;
+  background-size: 80% 80%;
+  cursor: pointer;
+}
+
+.topNav-right_code {
+  top: 15px;
+  width: 40px;
+  height: 40px;
+  margin: 0px 10px;
+  background: url("../images/Qrcode.png") center no-repeat;
+  background-size: 80% 80%;
+  cursor: pointer;
+}
+
+
+.mainNav {
+  min-width: 100px
+}
+
+.mainNav > ul li {
+  display: block;
+  left: 0;
+}
+
+.mainNav::after {
+  clear: both;
+  display: table;
+  content: ""
+}
+
+.mainNav_ul {
+  padding: 0;
+  list-style: none;
+  left: 0;
+  width: 100%;
+  padding: 0;
+  background: #fff;
+  text-decoration: none;
+}
+
+.mainNav_li{
+  display: block;
+  float: left;
+  width: 181px;
+  height: 40px;
+  border-left: 1px solid silver;
+  border-top: 1px solid silver;
+  border-bottom: 1px solid silver;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.mainNav_li > .router-link-active {
+  border-bottom: 2px solid #b8a1cf;
+  color: #b8a1cf;
+  background-color: #eeeaf3;
+}
+
+.mainNav_li > .a:hover, .a:focus {
+  color: #b8a1cf;
+  background-color: #eeeaf3;
+}
+
+.mainNav_li > .a {
+  display: block;
+  padding: 8px 16px;
+  color: #595959;
+  text-decoration: none
+}
+.footer{
+  background-color: #8674a1;
+  height: 60px;
+  line-height: 350%;
+}
