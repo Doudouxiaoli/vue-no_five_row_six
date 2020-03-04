@@ -3,9 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
-Vue.config.productionTip = false
-
+import axios from 'axios'
+import qs from 'qs'
+Vue.prototype.$axios = axios;
+Vue.prototype.$baseURL = process.env.API_ROOT;
+Vue.prototype.$rootUrl='http://localhost:9090/'
+Vue.config.productionTip = false;
+Vue.use(qs)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

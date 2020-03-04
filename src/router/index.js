@@ -1,15 +1,23 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from '@/components/Index'
 
 Vue.use(Router)
-
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
       name: 'Index',
-      component: Index
+      component: Index => require(['../components/Index'], Index)
+    },
+    {
+      path: "/Album",
+      component: Album=> require(['../components/album/List'], Album),
+    },
+    {
+      path: "/AlbumDetail/:albumId",
+      name: "AlbumDetail",
+      component: AlbumDetail=> require(['../components/album/Detail'], AlbumDetail)
     }
   ]
 })

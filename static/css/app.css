@@ -122,16 +122,16 @@ div {
 }
 
 
-.mainNav {
+.content {
   min-width: 100px
 }
 
-.mainNav > ul li {
+.content > ul li {
   display: block;
   left: 0;
 }
 
-.mainNav::after {
+.content::after {
   clear: both;
   display: table;
   content: ""

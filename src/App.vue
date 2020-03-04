@@ -21,13 +21,13 @@
             </router-link>
           </div>
         </div>
-        <div class="mainNav">
+        <div class="content">
           <ul class="mainNav_ul">
             <li class="mainNav_li">
-              <router-link to="/hello" class="a">主页</router-link>
+              <router-link to="/" class="a">主页</router-link>
             </li>
             <li class="mainNav_li">
-              <router-link to="/album" class="a">专辑</router-link>
+              <router-link to="/Album" class="a">专辑</router-link>
             </li>
             <li class="mainNav_li">
               <router-link to="/concert" class="a">演唱会</router-link>
