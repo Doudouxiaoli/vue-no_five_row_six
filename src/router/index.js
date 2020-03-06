@@ -12,12 +12,21 @@ export default new Router({
     },
     {
       path: "/Album",
-      component: Album=> require(['../components/album/List'], Album),
+      component: Album => require(['../components/album/List'], Album),
     },
     {
       path: "/AlbumDetail/:albumId",
       name: "AlbumDetail",
-      component: AlbumDetail=> require(['../components/album/Detail'], AlbumDetail)
+      component: AlbumDetail => require(['../components/album/Detail'], AlbumDetail)
+    },
+    {
+      path: "/Concert",
+      component: Concert => require(['../components/concert/List'], Concert),
+    },
+    {
+      path: "/ConcertDetail/:concertId&:runningId",
+      name: "ConcertDetail",
+      component: ConcertDetail => require(['../components/concert/Detail'], ConcertDetail)
     }
   ]
 })
