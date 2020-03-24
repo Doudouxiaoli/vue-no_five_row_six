@@ -7,25 +7,26 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Index',
       component: Index => require(['../components/Index'], Index)
     },
     {
-      path: "/Album",
+      path: "/album",
+      name: "album",
       component: Album => require(['../components/album/List'], Album),
     },
     {
-      path: "/AlbumDetail/:albumId",
-      name: "AlbumDetail",
+      path: "/album/albumDetail/:albumId",
+      name: "albumDetail",
       component: AlbumDetail => require(['../components/album/Detail'], AlbumDetail)
     },
     {
-      path: "/Concert",
+      path: "/concert",
+      name: "concert",
       component: Concert => require(['../components/concert/List'], Concert),
     },
     {
-      path: "/ConcertDetail/:concertId&:runningId",
-      name: "ConcertDetail",
+      path: "/concert/concertDetail/:concertId?/:runningId?",
+      name: "concertDetail",
       component: ConcertDetail => require(['../components/concert/Detail'], ConcertDetail)
     }
   ]

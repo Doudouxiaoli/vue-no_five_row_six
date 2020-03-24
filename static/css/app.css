@@ -142,12 +142,13 @@ div {
   list-style: none;
   left: 0;
   width: 100%;
+  height: 45px;
   padding: 0;
   background: #fff;
   text-decoration: none;
 }
 
-.mainNav_li{
+.mainNav_li {
   display: block;
   float: left;
   width: 181px;
@@ -159,24 +160,25 @@ div {
   box-sizing: border-box;
 }
 
-.mainNav_li > .router-link-active {
+.router-link-active {
   border-bottom: 2px solid #b8a1cf;
   color: #b8a1cf;
   background-color: #eeeaf3;
 }
 
-.mainNav_li > .a:hover, .a:focus {
+.mainNav_li > .link:hover, .link:focus {
   color: #b8a1cf;
   background-color: #eeeaf3;
 }
 
-.mainNav_li > .a {
+.mainNav_li > .link {
   display: block;
   padding: 8px 16px;
   color: #595959;
   text-decoration: none
 }
-.footer{
+
+.footer {
   background-color: #8674a1;
   height: 60px;
   line-height: 350%;

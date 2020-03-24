@@ -2,7 +2,7 @@
   <div class="scrollCon">
     <div class="comm clear">
       <div class="informationWrapper flex padding-top-10" :key="index" v-for="(item,index) in list">
-        <router-link to="{name:'AlbumDetail',params:{concertId: item.fcId}}" class="concertBgBox">
+        <router-link :to="{name:'concertDetail',params:{concertId: item.fcId,runningId:null}}" class="concertBgBox">
           <img :src="$rootUrl+item.fcImg" class="concertImg">
           <div class="concert-dec">
             <div class="itemInf-name padding-top-140">{{item.fcTitle}}</div>
@@ -17,6 +17,7 @@
 
 <script>
     import {formatDate} from "../../utils/date";
+
     export default {
         name: "Concert",
         data() {
@@ -26,27 +27,12 @@
                 display: 10
             }
         },
-        watch: {
-            $route(to, from) {
-                console.log(to);
-            }
-        },
-        methods: {
-            // seeShare(){
-            //     let routeUrl = this.$router.resolve({
-            //         path: "/AlbumDetail",
-            //         query: {albumId:96}
-            //     });
-            //     window.open(routeUrl.href, '_blank');
-            // }
-        },
         created() {
             this.$axios({
                 method: "get",
                 url: `${this.$baseURL}/concert/listAjax`,
             })
                 .then((response) => {
-                    // console.log(response)
                     this.list = response.data.data.records;
                 })
                 .catch((error) => {

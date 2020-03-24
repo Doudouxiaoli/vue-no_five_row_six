@@ -30,3 +30,49 @@
   text-align: left;
   height: 260px;
 }
+
+.programBgBox {
+  display: block;
+  height: 80px;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.concertMvImg {
+  width: 100px;
+  height: 80px;
+}
+
+.mvBox {
+  width: 800px;
+}
+
+.mv-text {
+  font-size: 25px;
+  color: #4b565e;
+  line-height: 50px;
+  width: 700px;
+}
+
+.recommendedBox {
+  vertical-align: top;
+  width: 250px;
+  padding-left: 10px;
+}
+
+.recommended-txt {
+  width: 140px;
+  font-size: 14px;
+  line-height: 27px;
+
+}
+
+.hidden-word {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.inline-block {
+  display: inline-block;
+}

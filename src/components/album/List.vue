@@ -3,7 +3,7 @@
     <div class="comm clear">
       <div class="informationWrapper flex">
         <div :key="index" v-for="(item,index) in list">
-          <router-link :to="{name:'AlbumDetail',params:{albumId: item.faId}}"class="itemBgBox">
+          <router-link :to="{name:'albumDetail',params:{albumId: item.faId}}"class="itemBgBox">
             <div class="item-img">
               <img :src="$rootUrl+item.faImg" alt="" class="albumImg">
               <img src="../../../static/images/stick.png" alt="" class="stickImg">
