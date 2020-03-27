@@ -40,7 +40,7 @@
               <router-link to="/endorsement" class="link">代言</router-link>
             </li>
             <li class="mainNav_li">
-              <router-link to="/moliVideo" class="link">影视作品</router-link>
+              <router-link to="/molivideo" class="link">影视作品</router-link>
             </li>
           </ul>
           <router-view :key="$route.fullPath"></router-view>

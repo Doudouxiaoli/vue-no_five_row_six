@@ -28,6 +28,31 @@ export default new Router({
       path: "/concert/concertDetail/:concertId?/:runningId?",
       name: "concertDetail",
       component: ConcertDetail => require(['../components/concert/Detail'], ConcertDetail)
-    }
+    },
+    {
+      path: "/molivideo",
+      name: "index",
+      component: Molivideo => require(['../components/molivideo/Index'], Molivideo),
+    },
+    {
+      path: "/molivideo/molivideoList/:type",
+      name: "molivideoList",
+      component: MolivideoList => require(['../components/molivideo/List'], MolivideoList),
+    },
+    {
+      path: "/molivideo/tvDetail/:fmvId?/:id?",
+      name: "tvDetail",
+      component: TvDetail => require(['../components/molivideo/TvDetail'], TvDetail),
+    },
+    {
+      path: "/molivideo/varietyDetail/:fmvId?/:id?",
+      name: "varietyDetail",
+      component: VarietyDetail => require(['../components/molivideo/VarietyDetail'], VarietyDetail),
+    },
+    {
+      path: "/molivideo/movieDetail/:fmvId?/:id?",
+      name: "movieDetail",
+      component: MovieDetail => require(['../components/molivideo/MovieDetail'], MovieDetail),
+    },
   ]
 })

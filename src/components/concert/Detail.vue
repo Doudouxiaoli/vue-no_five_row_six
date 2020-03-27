@@ -6,7 +6,7 @@
           <div class="mv-text hidden-word">
             {{runningMv.fcpName}}
           </div>
-          <div id="player"></div>
+          <div id="player" style="margin-left:100px"></div>
           <div class="program-content itemInf-txt">
             <p v-html="concert.fcContent"></p>
           </div>
@@ -16,8 +16,8 @@
           <div :key="index" v-for="(program,index) in programList">
             <router-link :to="{name:'concertDetail',params:{concertId: concert.fcId,runningId: program.fcpId}}"
                          class="programBgBox">
-              <img :src="$rootUrl+program.fcpImg" class="concertMvImg inline-block">
-              <div class="recommended-txt hidden-word inline-block ">{{program.fcpName}}</div>
+              <img :src="$rootUrl+program.fcpImg" class="mvImg inline-block">
+              <div class="recommended-txt hidden-word inline-block" >{{program.fcpName}}</div>
             </router-link>
           </div>
         </div>
@@ -26,7 +26,6 @@
   </div>
 </template>
 <script>
-    import {formatDate} from "../../utils/date";
 
     export default {
         name: "ConcertDetail",
@@ -59,8 +58,8 @@
                 this.programList = response.data.data["2"];
                 var player = polyvPlayer({
                     wrap: '#player',
-                    width: '450px',
-                    height: "300px",
+                    width: '600px',
+                    height: "400px",
                     autoplay: true,
                     vid: this.runningMv.fcpVid
                 });
@@ -70,16 +69,10 @@
 
         }
         ,
-        filters: {
-            dateFormat(time) {
-                var date = new Date(time);
-                return formatDate(date, "yyyy-MM-dd");
-            }
-        },
         watch: {
             $route(to, from) {
                 if (to.path !== from.path) {
-                    this.$router.go(0)
+                    // this.$router.go(0)
                 }
             }
         }

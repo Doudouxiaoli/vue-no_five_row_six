@@ -3,9 +3,9 @@
     <div class="comm clear">
       <div class="informationWrapper flex">
         <div :key="index" v-for="(item,index) in list">
-          <router-link :to="{name:'albumDetail',params:{albumId: item.faId}}"class="itemBgBox">
-            <div class="item-img">
-              <img :src="$rootUrl+item.faImg" alt="" class="albumImg">
+          <router-link :to="{name:'albumDetail',params:{albumId: item.faId}}"class="itemBox itemBoxBg">
+            <div class="item-img-box">
+              <img :src="$rootUrl+item.faImg" alt="" class="item-img">
               <img src="../../../static/images/stick.png" alt="" class="stickImg">
             </div>
             <div class="item-dec marginLeft">
