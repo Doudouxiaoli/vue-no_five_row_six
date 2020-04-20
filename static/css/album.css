@@ -73,11 +73,11 @@
 
 /*无版权歌曲*/
 .noCopyright {
+  vertical-align: text-bottom;
   color: red;
 }
 
 .songMvIcon {
-  padding-bottom: 0px;
   cursor: pointer;
 }
 
