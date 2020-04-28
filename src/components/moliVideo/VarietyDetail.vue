@@ -12,7 +12,8 @@
           <div class="informationTitle">正片:</div>
           <div :key="index" v-for="(item,index) in waitingList">
             <router-link :to="{name:'varietyDetail',params:{fmvId:null,id: item.fvId}}" class="programBgBox">
-              <img :src="$rootUrl+item.fvImg" class="mvImg inline-block">
+              <img v-if='item.fvImg!==""' :src="$rootUrl+item.fvImg" class="mvImg inline-block">
+              <img v-else src="../../../static/images/defaultImg.jpg" alt="" class="mvImg inline-block">
               <div class="recommended-txt hidden-word inline-block">
                 <span style="font-family: fantasy">第{{item.fvSort}}期:</span>
               </div>

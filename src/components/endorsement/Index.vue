@@ -8,7 +8,8 @@
         <div :key="index" v-for="(item,index) in foodList">
           <router-link :to="{name:'endorsementDetail',params:{id:item.feId}}" class="itemBox">
             <div class="item-img-box">
-              <img :src="$rootUrl+item.feImg" alt="" class="item-img" style="margin-left: 0">
+              <img v-if='item.feImg!==""' :src="$rootUrl+item.feImg" alt="" class="item-img" style="margin-left: 0">
+              <img v-else src="../../../static/images/defaultImg.jpg" alt="" class="item-img" style="margin-left: 0">
             </div>
             <div class="item-dec marginLeft" style="margin-left: 20px">
               <div class="itemInf-name">{{item.feName}}</div>
@@ -24,7 +25,8 @@
         <div :key="index" v-for="(item,index) in makeupList">
           <router-link :to="{name:'endorsementDetail',params:{id:item.feId}}" class="itemBox">
             <div class="item-img-box">
-              <img :src="$rootUrl+item.feImg" alt="" class="item-img" style="margin-left: 0">
+              <img v-if='item.feImg!==""' :src="$rootUrl+item.feImg" alt="" class="item-img" style="margin-left: 0">
+              <img v-else src="../../../static/images/defaultImg.jpg"  class="item-img" style="margin-left: 0">
             </div>
             <div class="item-dec marginLeft" style="margin-left: 20px">
               <div class="itemInf-name">{{item.feName}}</div>
@@ -40,7 +42,8 @@
         <div :key="index" v-for="(item,index) in clothesList">
           <router-link :to="{name:'endorsementDetail',params:{id:item.feId}}" class="itemBox">
             <div class="item-img-box">
-              <img :src="$rootUrl+item.feImg" alt="" class="item-img" style="margin-left: 0">
+              <img v-if='item.feImg!==""' :src="$rootUrl+item.feImg" alt="" class="item-img" style="margin-left: 0">
+              <img v-else src="../../../static/images/defaultImg.jpg" alt="" class="item-img" style="margin-left: 0">
             </div>
             <div class="item-dec marginLeft" style="margin-left: 20px">
               <div class="itemInf-name">{{item.feName}}</div>
@@ -56,7 +59,8 @@
         <div :key="index" v-for="(item,index) in luxuryList">
           <router-link :to="{name:'endorsementDetail',params:{id:item.feId}}" class="itemBox">
             <div class="item-img-box">
-              <img :src="$rootUrl+item.feImg" alt="" class="item-img" style="margin-left: 0">
+              <img v-if='item.feImg!==""' :src="$rootUrl+item.feImg" alt="" class="item-img" style="margin-left: 0">
+              <img v-else src="../../../static/images/defaultImg.jpg" class="item-img" style="margin-left: 0">
             </div>
             <div class="item-dec marginLeft" style="margin-left: 20px">
               <div class="itemInf-name">{{item.feName}}</div>
@@ -72,7 +76,8 @@
         <div :key="index" v-for="(item,index) in gameList">
           <router-link :to="{name:'endorsementDetail',params:{id:item.feId}}" class="itemBox">
             <div class="item-img-box">
-              <img :src="$rootUrl+item.feImg" alt="" class="item-img" style="margin-left: 0">
+              <img v-if='item.feImg!==""' :src="$rootUrl+item.feImg" alt="" class="item-img" style="margin-left: 0">
+              <img v-else src="../../../static/images/defaultImg.jpg" class="item-img" style="margin-left: 0">
             </div>
             <div class="item-dec marginLeft" style="margin-left: 20px">
               <div class="itemInf-name">{{item.feName}}</div>

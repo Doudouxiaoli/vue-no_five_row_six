@@ -16,7 +16,8 @@
           <div :key="index" v-for="(program,index) in programList">
             <router-link :to="{name:'concertDetail',params:{concertId: concert.fcId,runningId: program.fcpId}}"
                          class="programBgBox">
-              <img :src="$rootUrl+program.fcpImg" class="mvImg inline-block">
+              <img v-if='program.fcpImg!==""' :src="$rootUrl+program.fcpImg" class="mvImg inline-block">
+              <img v-else src="../../../static/images/defaultImg.jpg" alt="" class="mvImg inline-block">
               <div class="recommended-txt hidden-word inline-block" >{{program.fcpName}}</div>
             </router-link>
           </div>

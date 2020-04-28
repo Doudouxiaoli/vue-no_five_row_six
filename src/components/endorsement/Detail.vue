@@ -10,7 +10,8 @@
             <div id="player" class="player"></div>
           </div>
           <div v-else>
-            <img :src="$rootUrl+endorsement.feImg" class="mvImg inline-block">
+            <img v-if='endorsement.feImg!==""' :src="$rootUrl+endorsement.feImg" class="mvImg inline-block">
+            <img v-else src="../../../static/images/defaultImg.jpg" class="mvImg inline-block">
           </div>
         </div>
       </div>

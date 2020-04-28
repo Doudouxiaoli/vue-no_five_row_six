@@ -6,7 +6,8 @@
         <div :key="index" v-for="(item,index) in list">
           <router-link :to="{name:prefix+'Detail',params:{fmvId: item.fmvId,id:null}}" class="itemBox">
             <div class="item-img-box">
-              <img :src="$rootUrl+item.fmvImg" alt="" class="item-img" style="margin-left: 0">
+              <img v-if='item.fmvImg!==""' :src="$rootUrl+item.fmvImg" alt="" class="item-img" style="margin-left: 0">
+              <img v-else src="../../../static/images/defaultImg.jpg" class="item-img" style="margin-left: 0">
             </div>
             <div class="item-dec marginLeft" style="margin-left: 20px">
               <div class="itemInf-name">{{item.fmvName}}</div>

@@ -3,7 +3,8 @@
     <div class="comm clear">
       <div class="informationWrapper flex padding-top-10" :key="index" v-for="(item,index) in list">
         <router-link :to="{name:'concertDetail',params:{concertId: item.fcId,runningId:null}}" class="concertBgBox">
-          <img :src="$rootUrl+item.fcImg" class="concertImg">
+          <img v-if='item.fcImg!==""' :src="$rootUrl+item.fcImg" class="concertImg">
+          <img v-else src="../../../static/images/defaultImg.jpg" alt="" class="concertImg">
           <div class="concert-dec">
             <div class="itemInf-name padding-top-140">{{item.fcTitle}}</div>
             <div class="itemInf-txt concert-margin">{{item.fcAddress}}-{{item.fcVenue}}</div>
@@ -30,7 +31,7 @@
         created() {
             this.$axios({
                 method: "get",
-                url: `${this.$baseURL}/concert/listAjax`,
+                url: `${this.$baseURL}/concert/list`,
             })
                 .then((response) => {
                     this.list = response.data.data.records;

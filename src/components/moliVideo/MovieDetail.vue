@@ -12,7 +12,9 @@
           <div class="informationTitle">推荐影片:</div>
           <div :key="index" v-for="(item,index) in waitingList">
             <router-link :to="{name:'movieDetail',params:{fmvId:null,id: item.fmId}}" class="programBgBox">
-              <img :src="$rootUrl+item.fmImg" class="mvImg inline-block">
+              <img v-if='item.fmImg!==""' :src="$rootUrl+item.fmImg" class="mvImg inline-block">
+              <img v-else src="../../../static/images/defaultImg.jpg" alt="" class="mvImg inline-block">
+
               <div class="recommended-txt inline-block" style="text-align:left">
                 <span class="">{{item.fmName}}</span>
                 <br>

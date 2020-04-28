@@ -8,7 +8,8 @@
         <div :key="index" v-for="(movie,index) in movieList">
           <router-link :to="{name:'movieDetail',params:{fmvId: movie.fmvId,id:null}}" class="itemBox">
             <div class="item-img-box">
-              <img :src="$rootUrl+movie.fmvImg" alt="" class="item-img" style="margin-left: 0">
+              <img v-if='movie.fmvImg!==""' :src="$rootUrl+movie.fmvImg" alt="" class="item-img" style="margin-left: 0">
+              <img v-else src="../../../static/images/defaultImg.jpg" alt="" class="item-img" style="margin-left: 0">
             </div>
             <div class="item-dec marginLeft" style="margin-left: 20px">
               <div class="itemInf-name">{{movie.fmvName}}</div>
@@ -24,7 +25,8 @@
         <div :key="index" v-for="(tv,index) in tvList">
           <router-link :to="{name:'tvDetail',params:{fmvId: tv.fmvId,id:null}}" class="itemBox">
             <div class="item-img-box">
-              <img :src="$rootUrl+tv.fmvImg" alt="" class="item-img" style="margin-left: 0">
+              <img v-if='tv.fmvImg!==""' :src="$rootUrl+tv.fmvImg" alt="" class="item-img" style="margin-left: 0">
+              <img v-else src="../../../static/images/defaultImg.jpg" class="item-img" style="margin-left: 0">
             </div>
             <div class="item-dec marginLeft" style="margin-left: 20px">
               <div class="itemInf-name">{{tv.fmvName}}</div>
@@ -40,7 +42,8 @@
         <div :key="index" v-for="(variety,index) in varietyList">
           <router-link :to="{name:'varietyDetail',params:{fmvId: variety.fmvId,id:null}}" class="itemBox">
             <div class="item-img-box">
-              <img :src="$rootUrl+variety.fmvImg" alt="" class="item-img" style="margin-left: 0">
+              <img v-if='variety.fmvImg!==""' :src="$rootUrl+variety.fmvImg" alt="" class="item-img" style="margin-left: 0">
+              <img v-else src="../../../static/images/defaultImg.jpg" class="item-img" style="margin-left: 0">
             </div>
             <div class="item-dec marginLeft" style="margin-left: 20px">
               <div class="itemInf-name">{{variety.fmvName}}</div>

@@ -3,17 +3,16 @@
     <div class="comm clear">
       <div class="informationWrapper flex">
         <div :key="index" v-for="(item,index) in list">
-          <router-link :to="{name:'albumDetail',params:{albumId: item.faId}}"class="itemBox itemBoxBg">
+          <router-link :to="{name:'danceDetail',params:{danceId: item.fdId}}"class="itemBox itemBoxBg">
             <div class="item-img-box">
-
-              <img v-if='item.faImg!==""' :src="$rootUrl+item.faImg" alt="" class="item-img">
+              <img v-if='item.fdIm!==""' :src="$rootUrl+item.fdImg" alt="" class="item-img">
               <img v-else src="../../../static/images/defaultImg.jpg" alt="" class="item-img">
               <img src="../../../static/images/stick.png" alt="" class="stickImg">
             </div>
             <div class="item-dec marginLeft">
-              <div class="itemInf-name">{{item.faName}}</div>
+              <div class="itemInf-name">{{item.fdTvName}}</div>
               <!--时间戳-->
-              <div class="itemInf-time">{{item.faTime|dateFormat}}</div>
+              <div class="itemInf-time">{{item.fdTime|dateFormat}}</div>
             </div>
           </router-link>
         </div>
@@ -25,7 +24,7 @@
     import {formatDate} from "../../utils/date";
 
     export default {
-        name: "Album",
+        name: "Dance",
         data() {
             return {
                 list: [],
@@ -38,35 +37,18 @@
               console.log(to);
           }
         },
-        methods:{
-            // seeShare(){
-            //     let routeUrl = this.$router.resolve({
-            //         path: "/AlbumDetail",
-            //         query: {albumId:96}
-            //     });
-            //     window.open(routeUrl.href, '_blank');
-            // }
-        },
         created() {
             this.$axios({
                 method: "get",
-                url: `${this.$baseURL}/album/list`,
+                url: `${this.$baseURL}/dance/list`,
             })
                 .then((response) => {
-                    this.list = response.data.data.records;
+                    this.list = response.data.data;
                 })
                 .catch((error) => {
                     console.log(error);
                 });
         },
-        //添加外部js
-        // mounted() {
-        //     const oScript = document.createElement('script');
-        //     oScript.type = 'text/javascript';
-        //     oScript.src = '../utils/date.js';
-        //     document.body.appendChild(oScript);
-        // },
-
         filters: {
             dateFormat(time) {
                 var date = new Date(time);
