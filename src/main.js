@@ -15,7 +15,7 @@ Vue.prototype.$rootUrl = 'http://localhost:9090/'
 Vue.config.productionTip = false;
 Vue.use(qs)
 import store from './store/index'
-/* eslint-disable no-new */
+
 new Vue({
   el: '#app',
   router,
@@ -23,22 +23,13 @@ new Vue({
   components: {App},
   template: '<App/>'
 })
-router.beforeEach((to, from, next) => {
-  window.document.title = to.meta.title;
-  const token = store.state.token
-  console.log(token)
-  if (to.meta.requireAuth) {// 判断该路由是否需要登录权限
-    console.log(to.meta.requireAuth)
-    if (token) {
-      next()
-    } else {
-      console.log("需要登录")
-      next({
-        path: '/login'
-      })
-    }
-  } else {
-    next()
+//添加请求拦截器，在请求头中加token
+axios.interceptors.request.use(config => {
+  if (localStorage.getItem('Authorization')) {
+    config.headers.Authorization = localStorage.getItem('Authorization');
   }
+  return config;
+
+}, error => {
+  return Promise.reject(error);
 })
-export default router

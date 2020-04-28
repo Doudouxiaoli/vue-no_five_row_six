@@ -200,7 +200,7 @@ input[type="text"], input[type="password"] {
   color: #fff;
 }
 
-input[type="submit"], button[type="button"] {
+button[type="button"] {
   font-size: 1em;
   color: #fff;
   background: #B098D2;
@@ -219,8 +219,7 @@ input[type="submit"], button[type="button"] {
   margin-top: 3em;
 }
 
-
-input[type="submit"]:hover, button[type="button"]:hover {
+button[type="button"]:hover {
   background: #81709A;
   -webkit-transform: translateY(8px);
   -ms-transform: translateY(8px);
@@ -550,7 +549,7 @@ input.checkbox {
     width: 67%;
   }
 
-  input[type="submit"] {
+  #loginBtn2,#registerBtn {
     padding: 0.9em;
   }
 }
@@ -564,7 +563,7 @@ input.checkbox {
     margin-top: 2.5em;
   }
 
-  input[type="submit"] {
+  #loginBtn2,#registerBtn {
     margin: 2.5em 0;
   }
 
@@ -623,7 +622,7 @@ input.checkbox {
     margin-top: 2em;
   }
 
-  input[type="submit"] {
+  #loginBtn2,#registerBtn {
     font-size: 0.9em;
   }
 
@@ -699,7 +698,7 @@ input.checkbox {
     margin: 1.8em 0 0;
   }
 
-  input[type="submit"] {
+  #loginBtn2,#registerBtn {
     margin: 1.5em 0;
     padding: 0.8em;
   }

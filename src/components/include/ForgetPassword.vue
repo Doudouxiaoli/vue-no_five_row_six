@@ -18,7 +18,7 @@
               </ul>
               <div class="clear"></div>
             </div>
-            <input type="submit" value="登录" id="loginBtn2" @click="doLogin('forgetFrom')">
+            <button type="button" id="loginBtn2" @click="doLogin('forgetFrom')">登录</button>
           </form>
         </div>
       </div>
@@ -39,67 +39,67 @@
 </template>
 
 <script>
-    export default {
-        name: "ForgetPassword",
-        data() {
-            return {
-                forgetFrom: {
-                    fuPhone: '',
-                    scCode: ''
-                }
-            }
-        },
-        methods: {
-            doLogin: function () {
-                this.$axios({
-                    method: "post",
-                    url: `${this.$baseURL}/user/forgetPassword`,
-                    params: {
-                        fuPhone: this.forgetFrom.fuPhone,
-                        scCode: this.forgetFrom.scCode
-                    }
-                })
-                    .then((response) => {
-                        if (response.data.success) {
-                            this.$router.replace({path: "/index"})
-                        } else {
-                            this.$router.push({path: "/forgetPassword"})
-                        }
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                    });
-            },
-            getCode: function () {
-                this.$axios({
-                    method: "post",
-                    url: `${this.$baseURL}/common/sendCode`,
-                    params: {
-                        mobile: this.forgetFrom.fuPhone,
-                        type: "mobile_login"
-                    }
-                })
-                    .then((response) => {
-                        var codeMsg = document.getElementById("#getCode");
-                        if (response.data.success) {
-                            alert("验证码发送成功,请注意查收");
-                            var time = 60;
-                            var set = setInterval(function () {
-                                codeMsg.html(--time + " s");
-                            }, 1000);
-                            setTimeout(function () {
-                                codeMsg.attr("disabled", false).html("重新获取");
-                                clearInterval(set);
-                            }, 60000);
-                        } else {
-                            alert(response.data.msg);
-                        }
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                    });
-            }
+  export default {
+    name: "ForgetPassword",
+    data() {
+      return {
+        forgetFrom: {
+          fuPhone: '',
+          scCode: ''
         }
+      }
+    },
+    methods: {
+      doLogin: function () {
+        this.$axios({
+          method: "post",
+          url: `${this.$baseURL}/user/forgetPassword`,
+          params: {
+            fuPhone: this.forgetFrom.fuPhone,
+            scCode: this.forgetFrom.scCode
+          }
+        })
+          .then((response) => {
+            if (response.data.success) {
+              this.$router.replace({path: "/index"})
+            } else {
+              this.$router.push({path: "/forgetPassword"})
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
+      getCode: function () {
+        this.$axios({
+          method: "post",
+          url: `${this.$baseURL}/common/sendCode`,
+          params: {
+            mobile: this.forgetFrom.fuPhone,
+            type: "mobile_login"
+          }
+        })
+          .then((response) => {
+            var codeMsg = document.getElementById("#getCode");
+            if (response.data.success) {
+              alert("验证码发送成功,请注意查收");
+              var time = 60;
+              var set = setInterval(function () {
+                codeMsg.html(--time + " s");
+              }, 1000);
+              setTimeout(function () {
+                codeMsg.attr("disabled", false).html("重新获取");
+                clearInterval(set);
+              }, 60000);
+            } else {
+              alert(response.data.msg);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
     }
+  }
 </script>
-<style scoped src="../../../static/css/login.css"/>
+<style scoped src="../../../static/css/login.css?v=1"/>

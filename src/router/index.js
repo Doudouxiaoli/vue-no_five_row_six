@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
+import store from "../store";
+//keepAlive是动态更改标题使用的
 Vue.use(Router)
-export default new Router({
+const router = new Router({
   mode: 'history',
   linkActiveClass: 'active',
   routes: [
@@ -16,7 +17,6 @@ export default new Router({
       meta: {
         title: "登录",
         keepAlive: false,
-        requireAuth: true
       },
       component: Login => require(['../components/include/Login'], Login)
     },
@@ -26,7 +26,6 @@ export default new Router({
       meta: {
         title: "注册",
         keepAlive: false,
-        requireAuth: true
       },
       component: Register => require(['../components/include/Register'], Register)
     },
@@ -54,7 +53,6 @@ export default new Router({
       meta: {
         title: '专辑',
         keepAlive: true,
-        requireAuth: true
       },
       component: Album => require(['../components/album/List'], Album),
     },
@@ -64,7 +62,6 @@ export default new Router({
       meta: {
         title: '专辑详情',
         keepAlive: true,
-        requireAuth: true
       },
       component: AlbumDetail => require(['../components/album/Detail'], AlbumDetail)
     },
@@ -83,7 +80,6 @@ export default new Router({
       meta: {
         title: '演唱会详情',
         keepAlive: true,
-        requireAuth: true
       },
       component: ConcertDetail => require(['../components/concert/Detail'], ConcertDetail)
     },
@@ -110,7 +106,6 @@ export default new Router({
       meta: {
         title: '电视剧',
         keepAlive: true,
-        requireAuth: true
       },
       component: TvDetail => require(['../components/molivideo/TvDetail'], TvDetail),
     },
@@ -120,7 +115,6 @@ export default new Router({
       meta: {
         title: '综艺',
         keepAlive: true,
-        requireAuth: true
       },
       component: VarietyDetail => require(['../components/molivideo/VarietyDetail'], VarietyDetail),
     },
@@ -130,7 +124,6 @@ export default new Router({
       meta: {
         title: '电影',
         keepAlive: true,
-        requireAuth: true
       },
       component: MovieDetail => require(['../components/molivideo/MovieDetail'], MovieDetail),
     },
@@ -157,16 +150,50 @@ export default new Router({
       meta: {
         title: '代言详情',
         keepAlive: true,
-        requireAuth: true
       },
       component: EndorsementDetail => require(['../components/endorsement/Detail'], EndorsementDetail),
     },
+    {
+      path: "/dance",
+      meta: {
+        title: '舞蹈列表',
+        keepAlive: true
+      },
+      component: Dance => require(['../components/dance/List'], Dance),
+    },
+    {
+      path: "/dance/detail/:danceId",
+      name: "danceDetail",
+      meta: {
+        title: '舞蹈详情',
+        keepAlive: true,
+      },
+      component: DanceDetail => require(['../components/dance/Detail'], DanceDetail),
+    },
   ]
+});
+//导航守卫
+//使用 router.beforeEach 注册一个全局前置守卫，判断用户是否登陆
+router.beforeEach((to, from, next) => {
+  window.document.title = to.meta.title;
+  if(to.path==='/login'||to.path==='/register'||to.path==='/forgetPassword'){
+    next();
+  }else {
+    let token = localStorage.getItem('Authorization');
+    console.log(token)
+    if(token===null||token===''){
+      next('/login');
+    }else {
+      next();
+    }
+  }
 })
 
 const originalPush = Router.prototype.push
 Router.prototype.push = function push(location) {
   return originalPush.call(this, location).catch(err => err)
 }
+
+export default router;
 
 
