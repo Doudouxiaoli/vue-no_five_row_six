@@ -1,4 +1,4 @@
-# no_five_row_six_vueo
+# no_five_row_six_vue
 
 > A Vue.js project
 
@@ -19,3 +19,6 @@ npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## 技术支持
+- 保利威视 http://my.polyv.net
+-
