@@ -17,7 +17,7 @@
           <router-link to="openQrcode" class="topNav-right_code a"></router-link>
 
           <div class="topNav-right_user a">
-            <img v-if="heardImg!==''||heardImg!==null" src="../../../static/images/userLogin.jpg">
+            <img v-if="haveToken" src="../../../static/images/userLogin.jpg">
             <img v-else src="../../../static/images/user.png" alt="未登录">
           </div>
           <div class="user-subMenu">
@@ -68,7 +68,8 @@
     data() {
       return {
         scriptContent: "This is about lay's journey",
-        heardImg: ''
+        heardImg: '',
+        haveToken: false
       }
     },
     created() {
@@ -78,6 +79,7 @@
           url: `${this.$baseURL}/userCenter/index`,
         })
           .then((response) => {
+            this.haveToken = true;
             this.heardImg = response.data.data["0"];
           })
           .catch((error) => {

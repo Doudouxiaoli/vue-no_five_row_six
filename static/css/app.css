@@ -107,7 +107,6 @@ div {
   margin-right: 10px;
   width: 40px;
   height: 40px;
-  border: 2px solid #8674a1;
   border-radius: 100px;
   overflow: hidden;
   background-size: 80% 80%;
@@ -117,6 +116,10 @@ div {
 .topNav-right_user > img {
   width: 100%;
   height: 100%;
+}
+
+.topNav-right_user > .haveTokenImg {
+  border: 1px solid #8674a1;
 }
 
 .topNav-right_code {
