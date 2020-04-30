@@ -67,7 +67,6 @@
         },
         methods: {
             gotoList(event) {
-                // console.log(event.currentTarget.id)
                 this.$router.push({name: 'molivideoList', params: {type: event.currentTarget.id}})
             },
         },

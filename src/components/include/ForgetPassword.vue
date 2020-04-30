@@ -39,6 +39,8 @@
 </template>
 
 <script>
+  import {mapMutations} from "vuex";
+
   export default {
     name: "ForgetPassword",
     data() {
@@ -50,25 +52,35 @@
       }
     },
     methods: {
+      ...mapMutations(['changeLogin']),
       doLogin: function () {
-        this.$axios({
-          method: "post",
-          url: `${this.$baseURL}/user/forgetPassword`,
-          params: {
-            fuPhone: this.forgetFrom.fuPhone,
-            scCode: this.forgetFrom.scCode
-          }
-        })
-          .then((response) => {
-            if (response.data.success) {
-              this.$router.replace({path: "/index"})
-            } else {
-              this.$router.push({path: "/forgetPassword"})
+        let _this = this;
+        if (this.forgetFrom.fuPhone===''||this.forgetFrom.scCode==='') {
+          alert("手机号或验证码不能为空")
+        } else {
+          this.$axios({
+            method: "post",
+            url: `${this.$baseURL}/user/forgetPassword`,
+            params: {
+              fuPhone: this.forgetFrom.fuPhone,
+              scCode: this.forgetFrom.scCode
             }
           })
-          .catch((error) => {
-            console.log(error);
-          });
+            .then((response) => {
+              if (response.data.success) {
+                _this.userToken = response.headers.token;
+                //将用户token存入到vuex中
+                _this.changeLogin({Authorization: _this.userToken});
+                _this.$router.replace({path: "/"})
+              } else {
+                _this.$router.push({path: "/forgetPassword"})
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
+
       },
       getCode: function () {
         this.$axios({

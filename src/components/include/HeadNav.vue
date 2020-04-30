@@ -14,17 +14,23 @@
             <button class="searchFrom_btn" type="submit">
             </button>
           </form>
-          <router-link to="openQrcode" class="topNav-right_code a">
-          </router-link>
-          <router-link to="userCenter" class="topNav-right_user a">
-          </router-link>
+          <router-link to="openQrcode" class="topNav-right_code a"></router-link>
+
+          <div class="topNav-right_user a">
+            <img v-if="heardImg!==''||heardImg!==null" src="../../../static/images/userLogin.jpg">
+            <img v-else src="../../../static/images/user.png" alt="未登录">
+          </div>
+          <div class="user-subMenu">
+            <router-link class="user-subMenu_item" to="userUpload">头像</router-link>
+            <router-link class="user-subMenu_item" to="userUpdate">编辑资料</router-link>
+          </div>
         </div>
       </div>
       <div class="content">
         <ul class="mainNav_ul">
           <li class="mainNav_li">
             <!--to属性的值必须和path中的路径对应-->
-            <router-link to="/index" class="link" exact>主页</router-link>
+            <router-link to="/" class="link" exact>主页</router-link>
           </li>
           <li class="mainNav_li">
             <router-link to="/album" class="link">专辑</router-link>
@@ -52,23 +58,39 @@
 </template>
 
 <script>
-    export default {
-        name: "HeadNav",
-        props: {
-            footType: {
-                type: String
-            }
-        },
-        data() {
-            return {
-                scriptContent: "This is about lay's journey"
-            }
-        },
-        watch: {
-            $route(to, from) {
-                // console.log(to.path, from.path);
-            }
-        }
-    }
+  export default {
+    name: "HeadNav",
+    props: {
+      footType: {
+        type: String
+      }
+    },
+    data() {
+      return {
+        scriptContent: "This is about lay's journey",
+        heardImg: ''
+      }
+    },
+    created() {
+      if (localStorage.getItem('Authorization') !== null) {
+        this.$axios({
+          method: "get",
+          url: `${this.$baseURL}/userCenter/index`,
+        })
+          .then((response) => {
+            this.heardImg = response.data.data["0"];
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    },
+  }
 </script>
 <style scoped src="../../../static/css/app.css"/>
+<style scoped>
+
+  .topNav-right_user:hover .user-subMenu {
+    display: block;
+  }
+</style>

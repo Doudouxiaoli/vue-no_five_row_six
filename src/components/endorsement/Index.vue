@@ -103,7 +103,6 @@
         },
         methods: {
             gotoList(event) {
-                // console.log(event.currentTarget.id)
                 this.$router.push({name: 'endorsementList', params: {type: event.currentTarget.id}})
             },
         },

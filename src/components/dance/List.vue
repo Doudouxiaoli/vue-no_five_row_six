@@ -7,7 +7,6 @@
             <div class="item-img-box">
               <img v-if='item.fdIm!==""' :src="$rootUrl+item.fdImg" alt="" class="item-img">
               <img v-else src="../../../static/images/defaultImg.jpg" alt="" class="item-img">
-              <img src="../../../static/images/stick.png" alt="" class="stickImg">
             </div>
             <div class="item-dec marginLeft">
               <div class="itemInf-name">{{item.fdTvName}}</div>
@@ -31,11 +30,6 @@
                 current: 1,
                 display: 10
             }
-        },
-        watch:{
-          $route(to,from){
-              console.log(to);
-          }
         },
         created() {
             this.$axios({

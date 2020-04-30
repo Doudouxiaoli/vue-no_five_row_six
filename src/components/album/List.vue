@@ -8,7 +8,6 @@
 
               <img v-if='item.faImg!==""' :src="$rootUrl+item.faImg" alt="" class="item-img">
               <img v-else src="../../../static/images/defaultImg.jpg" alt="" class="item-img">
-              <img src="../../../static/images/stick.png" alt="" class="stickImg">
             </div>
             <div class="item-dec marginLeft">
               <div class="itemInf-name">{{item.faName}}</div>
@@ -32,11 +31,6 @@
                 current: 1,
                 display: 10
             }
-        },
-        watch:{
-          $route(to,from){
-              console.log(to);
-          }
         },
         methods:{
             // seeShare(){

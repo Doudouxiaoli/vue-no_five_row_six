@@ -84,7 +84,6 @@
 
       },
       getCode: function () {
-        console.log(this.registerForm.fuPhone)
         if ((/^1[3456789]\d{9}$/.test(this.registerForm.fuPhone))) {
           this.$axios({
             method: "post",

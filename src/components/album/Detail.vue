@@ -69,7 +69,6 @@
         },
         methods: {
             playMv(t) {
-                console.log(t)
                 this.isShowMv = !this.isShowMv;
                 this.isPlayMv = !this.isPlayMv;
                 var player = polyvPlayer({

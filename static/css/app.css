@@ -64,6 +64,7 @@ div {
   position: relative;
   float: right;
   display: block;
+  z-index: 2;
 }
 
 .topNav-right > .topNav-right_user, .topNav-right_searchFrom, .topNav-right_code {
@@ -103,12 +104,19 @@ div {
 
 .topNav-right_user {
   top: 15px;
+  margin-right: 10px;
   width: 40px;
   height: 40px;
-  margin-right: 10px;
-  background: url("../images/user.png") center no-repeat;
+  border: 2px solid #8674a1;
+  border-radius: 100px;
+  overflow: hidden;
   background-size: 80% 80%;
   cursor: pointer;
+}
+
+.topNav-right_user > img {
+  width: 100%;
+  height: 100%;
 }
 
 .topNav-right_code {
@@ -121,6 +129,42 @@ div {
   cursor: pointer;
 }
 
+.topNav-right_user:hover + .user-subMenu {
+  display: block;
+}
+
+.topNav-right_user:visited + .user-subMenu {
+  display: block;
+}
+
+/*二级下拉框*/
+
+.user-subMenu {
+  position: absolute;
+  display: none;
+  width: 180px;
+  margin-top: -30px;
+  margin-left: 166px;
+  background-color: chocolate;
+}
+
+.user-subMenu_item {
+  display: inline-block;
+  height: 30px;
+  width: 100%;
+  border-bottom: 1px solid #cfbcf8;
+  background-color: #e9e8fd;
+  color: darkorchid;
+  font-family: sans-serif, "华文宋体";
+  line-height: 2;
+  font-size: 16px;
+  text-decoration-line: none;
+}
+
+.user-subMenu_item:hover {
+  background-color: #8674a1;
+  color: cornsilk;
+}
 
 .content {
   min-width: 100px

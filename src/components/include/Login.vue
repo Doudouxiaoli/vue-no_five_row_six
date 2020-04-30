@@ -54,7 +54,7 @@
         loginForm: {
           username: '',
           password: ''
-        }
+        },
       }
     },
     methods: {
@@ -76,9 +76,10 @@
               _this.userToken = response.headers.token;
               //将用户token存入到vuex中
               _this.changeLogin({Authorization: _this.userToken});
-              _this.$router.replace({path: "/index"})
+              //跳转到拦截页面
+              _this.$router.go(-1);
             } else {
-              _this.$router.push({path: "/login"})
+              _this.$router.push({path: "/login"});
             }
           })
             .catch((error) => {
