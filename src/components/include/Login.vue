@@ -79,6 +79,7 @@
               //跳转到拦截页面
               _this.$router.go(-1);
             } else {
+              alert("用户登录失败，请检查用户名或密码是否正确")
               _this.$router.push({path: "/login"});
             }
           })

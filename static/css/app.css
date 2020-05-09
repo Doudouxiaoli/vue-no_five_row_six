@@ -132,25 +132,17 @@ div {
   cursor: pointer;
 }
 
-.topNav-right_user:hover + .user-subMenu {
-  display: block;
-}
-
-.topNav-right_user:visited + .user-subMenu {
-  display: block;
-}
-
 /*二级下拉框*/
 
 .user-subMenu {
   position: absolute;
   display: none;
   width: 180px;
-  margin-top: -30px;
   margin-left: 166px;
-  background-color: chocolate;
 }
-
+.block{
+  display: block;
+}
 .user-subMenu_item {
   display: inline-block;
   height: 30px;

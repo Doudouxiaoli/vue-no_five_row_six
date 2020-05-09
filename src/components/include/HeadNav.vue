@@ -16,11 +16,11 @@
           </form>
           <router-link to="openQrcode" class="topNav-right_code a"></router-link>
 
-          <div class="topNav-right_user a">
+          <div class="topNav-right_user a" @mouseenter="showSecondMenu()">
             <img v-if="haveToken" src="../../../static/images/userLogin.jpg">
             <img v-else src="../../../static/images/user.png" alt="未登录">
           </div>
-          <div class="user-subMenu">
+          <div class="user-subMenu" :class="[this.showSubMenu?'block':'']">
             <router-link class="user-subMenu_item" to="userUpload">头像</router-link>
             <router-link class="user-subMenu_item" to="userUpdate">编辑资料</router-link>
           </div>
@@ -52,7 +52,7 @@
       </div>
     </div>
     <footer class="footer">
-      <p>{{ scriptContent}}{{footType}}</p>
+      <p>{{ footContent}}{{footType}}</p>
     </footer>
   </div>
 </template>
@@ -67,9 +67,10 @@
     },
     data() {
       return {
-        scriptContent: "This is about lay's journey",
+        footContent: "This is about lay's journey",
         heardImg: '',
-        haveToken: false
+        haveToken: false,
+        showSubMenu: false
       }
     },
     created() {
@@ -87,12 +88,18 @@
           });
       }
     },
+    methods: {
+      //鼠标移进移出对二级导航显示隐藏
+      showSecondMenu() {
+        this.showSubMenu = !this.showSubMenu;
+      },
+      //鼠标移出失效
+      // hiddenSecondMenu() {
+      //   setTimeout(function () {
+      //     this.showSubMenu = !this.showSubMenu;
+      //   }, 2000);
+      // }
+    }
   }
 </script>
 <style scoped src="../../../static/css/app.css"/>
-<style scoped>
-
-  .topNav-right_user:hover .user-subMenu {
-    display: block;
-  }
-</style>
