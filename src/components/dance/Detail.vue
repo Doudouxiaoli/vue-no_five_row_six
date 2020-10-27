@@ -4,17 +4,17 @@
       <div class="informationWrapper open">
         <div class="mvBox inline-block">
           <div class="mv-text hidden-word">
-            {{runningDance.fdTvName}}
+            {{runningDance.znFrom}}
           </div>
           <div id="player" style="margin-left:100px"></div>
         </div>
         <div class="recommendedBox inline-block">
           <div class="informationTitle">推荐视频:</div>
           <div :key="index" v-for="(dance,index) in waitingList">
-            <router-link :to="{name:'danceDetail',params:{danceId: dance.fdId}}" class="programBgBox">
-              <img v-if='program.fdImg!==""' :src="$rootUrl+program.fdImg" class="mvImg inline-block">
+            <router-link :to="{name:'danceDetail',params:{danceId: dance.znId}}" class="programBgBox">
+              <img v-if='program.znThumbnailPath!==""' :src="$rootUrl+program.znThumbnailPath" class="mvImg inline-block">
               <img v-else src="../../../static/images/defaultImg.jpg" alt="" class="item-img">
-              <div class="recommended-txt hidden-word inline-block" >{{program.fdTvName}}</div>
+              <div class="recommended-txt hidden-word inline-block" >{{program.znFrom}}</div>
             </router-link>
           </div>
         </div>

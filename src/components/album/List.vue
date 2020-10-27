@@ -3,16 +3,16 @@
     <div class="comm clear">
       <div class="informationWrapper flex">
         <div :key="index" v-for="(item,index) in list">
-          <router-link :to="{name:'albumDetail',params:{albumId: item.faId}}"class="itemBox itemBoxBg">
+          <router-link :to="{name:'albumDetail',params:{pk: item.znId}}" class="itemBox itemBoxBg">
             <div class="item-img-box">
 
-              <img v-if='item.faImg!==""' :src="$rootUrl+item.faImg" alt="" class="item-img">
+              <img v-if='item.znThumbnailPath!==""' :src="$rootUrl+item.znThumbnailPath" alt="" class="item-img">
               <img v-else src="../../../static/images/defaultImg.jpg" alt="" class="item-img">
             </div>
             <div class="item-dec marginLeft">
-              <div class="itemInf-name">{{item.faName}}</div>
+              <div class="itemInf-name">{{item.znTitle}}</div>
               <!--时间戳-->
-              <div class="itemInf-time">{{item.faTime|dateFormat}}</div>
+              <div class="itemInf-time">{{item.znDate|dateFormat}}</div>
             </div>
           </router-link>
         </div>
@@ -21,54 +21,38 @@
   </div>
 </template>
 <script>
-    import {formatDate} from "../../utils/date";
+  import {formatDate} from "../../utils/date";
 
-    export default {
-        name: "Album",
-        data() {
-            return {
-                list: [],
-                current: 1,
-                display: 10
-            }
-        },
-        methods:{
-            // seeShare(){
-            //     let routeUrl = this.$router.resolve({
-            //         path: "/AlbumDetail",
-            //         query: {albumId:96}
-            //     });
-            //     window.open(routeUrl.href, '_blank');
-            // }
-        },
-        created() {
-            this.$axios({
-                method: "get",
-                url: `${this.$baseURL}/album/list`,
-            })
-                .then((response) => {
-                    this.list = response.data.data.records;
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
-        },
-        //添加外部js
-        // mounted() {
-        //     const oScript = document.createElement('script');
-        //     oScript.type = 'text/javascript';
-        //     oScript.src = '../utils/date.js';
-        //     document.body.appendChild(oScript);
-        // },
+  export default {
+    name: "Album",
+    data() {
+      return {
+        list: [],
+        current: 1,
+        display: 10
+      }
+    },
+    created() {
+      this.$axios({
+        method: "get",
+        url: `${this.$baseURL}/news/index?moduleId=0`,
+      })
+        .then((response) => {
+          this.list = response.data.data.records;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
 
-        filters: {
-            dateFormat(time) {
-                var date = new Date(time);
-                return formatDate(date, "yyyy-MM-dd");
-            }
-        }
-
+    filters: {
+      dateFormat(time) {
+        var date = new Date(time);
+        return formatDate(date, "yyyy-MM-dd");
+      }
     }
+
+  }
 </script>
 
 <style scoped src="../../../static/css/album.css"/>

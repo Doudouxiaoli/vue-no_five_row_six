@@ -4,21 +4,21 @@
       <div class="informationWrapper open">
         <div class="mvBox inline-block">
           <div class="mv-text hidden-word" style="text-align: left">
-            {{runningMovie.fmName}}
+            {{runningMovie.znTitle}}
           </div>
           <div id="player" class="player"></div>
         </div>
         <div class="recommendedBox inline-block">
           <div class="informationTitle">推荐影片:</div>
           <div :key="index" v-for="(item,index) in waitingList">
-            <router-link :to="{name:'movieDetail',params:{fmvId:null,id: item.fmId}}" class="programBgBox">
-              <img v-if='item.fmImg!==""' :src="$rootUrl+item.fmImg" class="mvImg inline-block">
+            <router-link :to="{name:'movieDetail',params:{fmvId:null,id: item.znId}}" class="programBgBox">
+              <img v-if='item.znThumbnailPath!==""' :src="$rootUrl+item.znThumbnailPath" class="mvImg inline-block">
               <img v-else src="../../../static/images/defaultImg.jpg" alt="" class="mvImg inline-block">
 
               <div class="recommended-txt inline-block" style="text-align:left">
-                <span class="">{{item.fmName}}</span>
+                <span class="">{{item.znTitle}}</span>
                 <br>
-                <span>{{item.fmTime|dateFormat}}</span>
+                <span>{{item.znDate|dateFormat}}</span>
               </div>
             </router-link>
           </div>
@@ -48,10 +48,10 @@
         created() {
             this.$axios({
                 method: "get",
-                url: `${this.$baseURL}/molivideo/movieDetail`,
+                url: `${this.$baseURL}/news/detail`,
                 params: {
-                    fmvId: this.$route.params.fmvId,
-                    id: this.$route.params.id
+                    fromId: this.$route.params.fmvId,
+                    pk: this.$route.params.id
                 }
             })
                 .then((response) => {

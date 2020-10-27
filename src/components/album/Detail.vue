@@ -2,11 +2,11 @@
   <div class="scrollCon" style="position: relative;">
     <div class="comm">
       <div class="informationWrapper open" v-for="album in albumAry">
-        <div class="itemInf-name text-align-left">
-          {{album.faName}}
+        <div class="itemInf-name text-align-left" v-if="album.znTitle">
+          {{album.znTitle}}
         </div>
-        <div class="itemInf-time text-align-left">{{album.faTime|dateFormat}}</div>
-        <div class="itemInf-txt text-align-left"><p v-html="album.faContent"></p></div>
+        <div class="itemInf-time text-align-left">{{album.zhDate|dateFormat}}</div>
+        <div class="itemInf-txt text-align-left"><p v-html="album.znContent"></p></div>
 
         <div class="edit-subTitle">
           歌曲列表
@@ -22,23 +22,23 @@
           <tr v-for="song in songList">
             <td>
               <img src="../../../static/images/collectionInAction.png" class="inline-block img-small">
-              <img v-if='song.fsVid' src="../../../static/images/mvPlay.png"
+              <img v-if='song.znVideoPath' src="../../../static/images/mvPlay.png"
                    class="inline-block img-small songMvIcon"
-                   @click="playMv(song.fsVid)"/>
+                   @click="playMv(song.znVideoPath)"/>
             </td>
             <td>
-                <span v-if="song.fsLink" style="vertical-align: text-bottom"> {{song.fsName}}
-                  <audio :src="song.fsLink" id="musicMp3" controls=""
+                <span v-if="song.znAddress" style="vertical-align: text-bottom"> {{song.znTitle}}
+                  <audio :src="song.znAddress" id="musicMp3" controls=""
                          style="height: 35px;vertical-align: sub"></audio></span>
-              <span v-else class="noCopyright">{{song.fsName}}
-                <audio :src="song.fsLink" controls=""
+              <span v-else class="noCopyright">{{song.znTitle}}
+                <audio :src="song.znAddress" controls=""
                        style="height: 35px;vertical-align: sub"></audio>
               </span>
 
             </td>
-            <td>{{song.fsSinger}}</td>
-            <td>{{album.faName}}</td>
-            <td>{{song.fsLength}}</td>
+            <td>{{song.znTitleOne}}</td>
+            <td>{{album.znTitle}}</td>
+            <td>{{song.znLength}}</td>
           </tr>
         </table>
       </div>
@@ -89,12 +89,13 @@
         created() {
             this.$axios({
                 method: "get",
-                url: `${this.$baseURL}/album/detail`,
+                url: `${this.$baseURL}/news/list`,
                 params: {
-                    albumId: this.$route.params.albumId
+                    id: this.$route.params.pk
                 }
             }).then((response) => {
                 //获取对应键值对的值
+              console.log(response.data.data["0"])
                 this.albumAry = response.data.data["0"];
                 this.songList = response.data.data["1"];
 

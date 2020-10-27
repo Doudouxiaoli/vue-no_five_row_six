@@ -62,7 +62,7 @@ const router = new Router({
       component: Album => require(['../components/album/List'], Album),
     },
     {
-      path: "/album/detail/:albumId",
+      path: "/album/detail/:pk",
       name: "albumDetail",
       meta: {
         title: '专辑详情',
@@ -99,7 +99,7 @@ const router = new Router({
       component: Molivideo => require(['../components/molivideo/Index'], Molivideo),
     },
     {
-      path: "/molivideo/list/:type",
+      path: "/molivideo/list/:type?/:typeName?/:url?",
       name: "molivideoList",
       meta: {
         title: '影视作品列表',
@@ -146,7 +146,7 @@ const router = new Router({
       component: Endorsement => require(['../components/endorsement/Index'], Endorsement),
     },
     {
-      path: "/endorsement/list/:type",
+      path: "/endorsement/list/:type?/:typeName?",
       name: "endorsementList",
       meta: {
         title: '代言列表',

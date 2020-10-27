@@ -4,15 +4,15 @@
       <div class="informationWrapper open">
         <div class="mvBox inline-block">
           <div class="mv-text hidden-word" style="text-align: left">
-            {{runningTv.ftName}}
-            <span style="font-family: fantasy">第{{runningTv.ftSort}}集</span>
+            {{runningTv.znTitle}}
+            <span style="font-family: fantasy">第{{runningTv.znPace}}集</span>
           </div>
           <div id="player" class="player"></div>
         </div>
         <div class="recommendedBox inline-block">
           <div class="informationTitle">正片:</div>
           <div :key="index" v-for="(item,index) in waitingList">
-            <button class="playBtn" @click="goTvDetail($event)" :id="item.ftId">{{item.ftSort}}</button>
+            <button class="playBtn" @click="goTvDetail($event)" :id="item.znId">{{item.znPace}}</button>
 
           </div>
         </div>
@@ -44,10 +44,10 @@
         created() {
             this.$axios({
                 method: "get",
-                url: `${this.$baseURL}/molivideo/tvDetail`,
+                url: `${this.$baseURL}/news/detail`,
                 params: {
-                    fmvId: this.$route.params.fmvId,
-                    id: this.$route.params.id
+                    fromId: this.$route.params.fmvId,
+                    pk: this.$route.params.id
                 }
             })
                 .then((response) => {
@@ -58,7 +58,7 @@
                         width: '800px',
                         height: "500px",
                         autoplay: true,
-                        vid: this.runningTv.ftVid
+                        vid: this.runningTv.znVideoPath
                     });
                 })
                 .catch((error) => {

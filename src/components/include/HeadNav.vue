@@ -73,21 +73,21 @@
         showSubMenu: false
       }
     },
-    created() {
-      if (localStorage.getItem('Authorization') !== null) {
-        this.$axios({
-          method: "get",
-          url: `${this.$baseURL}/userCenter/index`,
-        })
-          .then((response) => {
-            this.haveToken = true;
-            this.heardImg = response.data.data["0"];
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      }
-    },
+    // created() {
+    //   if (localStorage.getItem('Authorization') !== null) {
+    //     this.$axios({
+    //       method: "get",
+    //       url: `${this.$baseURL}/userCenter/index`,
+    //     })
+    //       .then((response) => {
+    //         this.haveToken = true;
+    //         this.heardImg = response.data.data["0"];
+    //       })
+    //       .catch((error) => {
+    //         console.log(error);
+    //       });
+    //   }
+    // },
     methods: {
       //鼠标移进移出对二级导航显示隐藏
       showSecondMenu() {

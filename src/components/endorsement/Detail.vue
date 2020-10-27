@@ -4,13 +4,13 @@
       <div class="informationWrapper open">
         <div class="mvBox inline-block">
           <div class="mv-text hidden-word" style="text-align: left">
-            {{endorsement.feName}}
+            {{endorsement.znTitle}}
           </div>
-          <div v-if="endorsement.feVid">
+          <div v-if="endorsement.znVideoPath">
             <div id="player" class="player"></div>
           </div>
           <div v-else>
-            <img v-if='endorsement.feImg!==""' :src="$rootUrl+endorsement.feImg" class="mvImg inline-block">
+            <img v-if='endorsement.znThumbnailPath!==""' :src="$rootUrl+endorsement.znThumbnailPath" class="mvImg inline-block">
             <img v-else src="../../../static/images/defaultImg.jpg" class="mvImg inline-block">
           </div>
         </div>
@@ -37,20 +37,13 @@
         created() {
             this.$axios({
                 method: "get",
-                url: `${this.$baseURL}/endorsement/detail`,
+                url: `${this.$baseURL}/news/detail`,
                 params: {
-                    id: this.$route.params.id
+                    fromId: this.$route.params.id
                 }
             })
                 .then((response) => {
-                    this.endorsement = response.data.data;
-                    // var player = polyvPlayer({
-                    //     wrap: '#player',
-                    //     width: '800px',
-                    //     height: "500px",
-                    //     autoplay: true,
-                    //     vid: response.data.data.feVid
-                    // });
+                    this.endorsement = response.data.data["1"];
                 })
                 .catch((error) => {
                     console.log(error);

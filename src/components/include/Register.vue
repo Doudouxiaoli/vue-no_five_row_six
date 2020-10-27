@@ -57,7 +57,7 @@
     },
     methods: {
       doRegister: function () {
-        if (this.registerForm.fuName !== '' && this.registerForm.fuPassword !== '' && this.registerForm.fuPhone !== '' && this.registerForm.scCode !== '') {
+        if (this.registerForm.fuName !== '' && this.registerForm.fuPassword !== '') {
           this.$axios({
             method: "post",
             url: `${this.$baseURL}/user/register`,
